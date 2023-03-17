@@ -26,6 +26,11 @@ def pomodoro(estudo, descanso):
     print('Hora de descansar!')
     contador(desc,"descanso")
     playsound.playsound("alarme.mp3")
+    restart = str(input("Voltar a estudar? (s/n)")).lower()
+    if restart == "s":
+        pomodoro(estudo,descanso)
+    else:
+        return 0
 
  
 
