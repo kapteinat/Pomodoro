@@ -1,5 +1,7 @@
-
 import time
+import playsound #biblioteca importada exlusivamente para o alarme
+
+
 
 #converter o tempo para minutos
 def conversor(t):
@@ -14,13 +16,18 @@ def contador(t,x):
         time.sleep(1) 
         t -=1
         
+        
 #funçao principal do codigo
 def pomodoro(estudo, descanso):
     estd = conversor(estudo)
     desc = conversor(descanso)
     contador(estd,"estudo")
+    playsound.playsound('alarme.mp3') #toca o mp3 do alarme
+    print('Hora de descansar!')
     contador(desc,"descanso")
+    playsound.playsound("alarme.mp3")
 
+ 
 
 
 #criando as variaveis
