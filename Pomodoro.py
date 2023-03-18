@@ -3,6 +3,7 @@ import playsound #biblioteca importada exlusivamente para o alarme
 
 
 
+
 #converter o tempo para minutos
 def conversor(t):
     return t * 60
@@ -18,7 +19,8 @@ def contador(t,x):
         
         
 #funçao principal do codigo
-def pomodoro(estudo, descanso):
+def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e descanso criadas logo abaixo
+    pausar = 0
     estd = conversor(estudo)
     desc = conversor(descanso)
     contador(estd,"estudo")
@@ -26,11 +28,15 @@ def pomodoro(estudo, descanso):
     print('Hora de descansar!')
     contador(desc,"descanso")
     playsound.playsound("alarme.mp3")
-    restart = str(input("Voltar a estudar? (s/n)")).lower()
-    if restart == "s":
-        pomodoro(estudo,descanso)
-    else:
-        return 0
+
+
+
+#def restart():
+ #   restart = str(input("Voltar a estudar? (s/n)")).lower()
+  #  if restart == "s":
+  #      pomodoro(estudo,descanso)
+   # else:
+   #     break
 
  
 
@@ -39,4 +45,17 @@ def pomodoro(estudo, descanso):
 estudo = int(input("Tempo para estudo(min): " ))
 descanso = int(input("Tempo para descanso(min): "))
 
-pomodoro(estudo, descanso) 
+pausar = 0
+quantidade = 0
+
+
+while True:
+    quantidade +=1
+    pomodoro(estudo, descanso)
+    restart = str(input("Voltar a estudar? (s/n)")).lower()
+    if restart == "s":
+        pass
+    else:
+        break
+    
+
