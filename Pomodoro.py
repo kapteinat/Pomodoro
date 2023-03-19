@@ -1,5 +1,6 @@
 import time
 import playsound #biblioteca importada exlusivamente para o alarme
+import os
 
 
 
@@ -20,7 +21,6 @@ def contador(t,x):
         
 #funçao principal do codigo
 def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e descanso criadas logo abaixo
-    pausar = 0
     estd = conversor(estudo)
     desc = conversor(descanso)
     contador(estd,"estudo")
@@ -31,9 +31,7 @@ def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e desca
 
 
 
-#criando as variaveis
-estudo = int(input("Tempo para estudo(min): " ))
-descanso = int(input("Tempo para descanso(min): "))
+
 
 pausar = 0
 quantidade = 0
@@ -41,6 +39,7 @@ tempopausa = 1
 
 def pausa(pausar):  #Funçao para perguntar ao usuario se quer uma pausa de 10 min após 4 pomodoros
     if pausar % 4 == 0:
+        os.system("clear")
         print(f"Você ja realizou 4 ou mais pomodoros em sequencia sem pausa!")
         pause = str(input("Que tal um descanso de 10 minutos? (s/n)")).lower()
         if pause == "s":
@@ -53,6 +52,13 @@ def pausa(pausar):  #Funçao para perguntar ao usuario se quer uma pausa de 10 m
         return 0
         
 
+#criando as variaveis
+os.system("clear")
+estudo = int(input("Tempo para estudo(min): " ))
+descanso = int(input("Tempo para descanso(min): "))
+
+
+#========MAIN==========
 
 
 while True:
@@ -63,9 +69,15 @@ while True:
     pausa(pausar)
     restart = str(input("Voltar a estudar? (s/n)")).lower()
     if restart == "s":
+        os.system("clear")
         pass
     else:
+        os.system("clear")
         break
 
 print(f"Parabéns, você realizou {quantidade} pomodoros !!")
+
+
+
+
 
