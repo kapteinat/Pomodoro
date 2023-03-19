@@ -7,7 +7,7 @@ import os
 
 #converter o tempo para minutos
 def conversor(t):
-    return t 
+    return t*60
 
 
 #faz o minuto chegar a 0 
@@ -35,7 +35,7 @@ def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e desca
 
 pausar = 0
 quantidade = 0
-tempopausa = 1
+tempopausa = 10
 
 def pausa(pausar):  #Funçao para perguntar ao usuario se quer uma pausa de 10 min após 4 pomodoros
     if pausar % 4 == 0:
@@ -76,7 +76,9 @@ while True:
         os.system("clear")
         break
 
+print("==================================================================")
 print(f"\033[1;32mParabéns, você realizou {quantidade} pomodoros !!\033[m")
+print("==================================================================")
 
 
 
