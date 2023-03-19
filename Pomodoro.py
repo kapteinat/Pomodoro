@@ -14,19 +14,19 @@ def conversor(t):
 def contador(t,x):
     while t:
         min, sec = divmod(t,60)
-        print(f"{x}: {min:02d}:{sec:02d}", end="\r")
+        print(f"\033[1;31m{x}: {min:02d}:{sec:02d}", end="\r\033[m")
         time.sleep(1) 
         t -=1
         
         
 #funçao principal do codigo
-def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e descanso criadas logo abaixo
+def pomodoro(estudo, descanso):  #usa como parametro as variaveis estudo e descanso
     estd = conversor(estudo)
     desc = conversor(descanso)
-    contador(estd,"estudo")
+    contador(estd,"Estudo")
     playsound.playsound('alarme.mp3') #toca o mp3 do alarme
-    print('Hora de descansar!')
-    contador(desc,"descanso")
+    print('\033[32mHora de descansar!\033[m')
+    contador(desc,"Descanso")
     playsound.playsound("alarme.mp3")
 
 
@@ -40,8 +40,8 @@ tempopausa = 1
 def pausa(pausar):  #Funçao para perguntar ao usuario se quer uma pausa de 10 min após 4 pomodoros
     if pausar % 4 == 0:
         os.system("clear")
-        print(f"Você ja realizou 4 ou mais pomodoros em sequencia sem pausa!")
-        pause = str(input("Que tal um descanso de 10 minutos? (s/n)")).lower()
+        print(f"\033[35mVocê ja realizou 4 ou mais pomodoros em sequencia sem pausa!")
+        pause = str(input("Que tal um descanso de 10 minutos? (s/n)\033[m")).lower()
         if pause == "s":
             tpp = conversor(tempopausa)
             contador (tpp, "Pausa")
@@ -54,8 +54,9 @@ def pausa(pausar):  #Funçao para perguntar ao usuario se quer uma pausa de 10 m
 
 #criando as variaveis
 os.system("clear")
-estudo = int(input("Tempo para estudo(min): " ))
-descanso = int(input("Tempo para descanso(min): "))
+estudo = int(input("\033[;32mTempo para estudo(min): " ))
+descanso = int(input("Tempo para descanso(min):\033[m "))
+os.system("clear")
 
 
 #========MAIN==========
@@ -64,10 +65,10 @@ descanso = int(input("Tempo para descanso(min): "))
 while True:
     quantidade +=1
     pausar +=1
-    print(f"Esse é seu pomodoro de número {quantidade}")
+    print(f"\033[32mEsse é seu pomodoro de número {quantidade}\033[m")
     pomodoro(estudo, descanso)
     pausa(pausar)
-    restart = str(input("Voltar a estudar? (s/n)")).lower()
+    restart = str(input("\033[32mVoltar a estudar? (s/n)\033[m")).lower()
     if restart == "s":
         os.system("clear")
         pass
@@ -75,7 +76,7 @@ while True:
         os.system("clear")
         break
 
-print(f"Parabéns, você realizou {quantidade} pomodoros !!")
+print(f"\033[1;32mParabéns, você realizou {quantidade} pomodoros !!\033[m")
 
 
 
